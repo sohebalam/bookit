@@ -109,6 +109,6 @@ const roomSchema = new mongoose.Schema({
   },
 })
 
-// mongoose.model.roomSchema = {}
+// mongoose.models.roomSchema = {}
 
-export default mongoose.model.roomSchema || mongoose.model("Room", roomSchema)
+export default mongoose.models.Room || mongoose.model("Room", roomSchema)
