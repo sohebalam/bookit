@@ -6,9 +6,11 @@ import {
 } from "../../../controllers/roomCont"
 import connectDB from "../../../config/connectDB"
 
+import onError from "../../../middlewares/errors"
+
 connectDB()
 
-const handler = nc()
+const handler = nc({ onError })
 
 handler.get(getSingleRoom)
 handler.put(updateRoom)
