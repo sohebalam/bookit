@@ -6,11 +6,17 @@ module.exports = (phase) => {
       env: {
         DB: "mongodb+srv://SebAlam:Mmilo123@cluster0.lb1qj.mongodb.net/bookit?retryWrites=true&w=majority",
       },
+      images: {
+        domains: ["res.cloudinary.com"],
+      },
     }
   }
   return {
     env: {
       DB: "mongodb+srv://SebAlam:Mmilo123@cluster0.lb1qj.mongodb.net/bookit?retryWrites=true&w=majority",
+    },
+    images: {
+      domains: ["res.cloudinary.com"],
     },
   }
 }
