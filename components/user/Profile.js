@@ -49,7 +49,7 @@ const Profile = () => {
 
     if (isUpdated) {
       router.push("/")
-      dispatch({ tpye: UPDATE_PROFILE_RESET })
+      dispatch({ type: UPDATE_PROFILE_RESET })
     }
   }, [dispatch, isUpdated, loadedUser, error])
 
