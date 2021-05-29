@@ -1,31 +1,32 @@
-const Room = require("../models/rooms")
-const mongoose = require("mongoose")
+const Room = require('../models/room');
+const mongoose = require('mongoose');
 
-const rooms = require("../data/rooms")
+const rooms = require('../data/rooms')
 
-mongoose.connect(
-  "mongodb+srv://ghulamabbas_bookit:bookit258@bookit.ghtfw.mongodb.net/bookit?retryWrites=true&w=majority",
-  {
+mongoose.connect('mongodb+srv://ghulamabbas_bookit:bookit258@bookit.ghtfw.mongodb.net/bookit?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true,
-  }
-)
+    useCreateIndex: true
+})
 
 const seedRooms = async () => {
-  try {
-    await Room.deleteMany()
-    console.log("Rooms are deleted")
+    try {
 
-    await Room.insertMany(rooms)
-    console.log("All Rooms are added.")
+        await Room.deleteMany();
+        console.log('Rooms are deleted');
 
-    process.exit()
-  } catch (error) {
-    console.log(error.message)
-    process.exit()
-  }
+        await Room.insertMany(rooms);
+        console.log('All Rooms are added.');
+
+        process.exit()
+
+
+    } catch (error) {
+        console.log(error.message);
+        process.exit()
+    }
 }
 
 seedRooms()
+
