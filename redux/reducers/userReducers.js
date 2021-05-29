@@ -6,6 +6,10 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_RESET,
 } from "../constants/userType"
 
 export const authReducer = (state = { user: null }, action) => {
@@ -43,6 +47,61 @@ export const authReducer = (state = { user: null }, action) => {
         loading: false,
         error: action.payload,
         isAuthenticated: false,
+      }
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      }
+
+    default:
+      return state
+  }
+}
+
+// export const userReducer = (state = {}, action) => {
+//   switch (action.type) {
+//     case UPDATE_PROFILE_REQUEST:
+//       return { loading: true }
+//     case UPDATE_PROFILE_SUCCESS:
+//       return { loading: false, isUpdated: action.payload }
+//     case UPDATE_PROFILE_FAIL:
+//       return { loading: false, isUpdated: false }
+//     case UPDATE_PROFILE_RESET:
+//       return { loading: false, error: action.payload }
+//     case CLEAR_ERRORS:
+//       return {
+//         ...state,
+//         error: null,
+//       }
+//     default:
+//       return state
+//   }
+// }
+export const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_PROFILE_REQUEST:
+      return {
+        loading: true,
+      }
+
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        isUpdated: action.payload,
+      }
+
+    case UPDATE_PROFILE_RESET:
+      return {
+        loading: false,
+        isUpdated: false,
+      }
+
+    case UPDATE_PROFILE_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
       }
 
     case CLEAR_ERRORS:

@@ -1,12 +1,10 @@
-import Login from "../components/auth/Login"
-import Layout from "../components/layout/Layout"
-
 import { getSession } from "next-auth/client"
-
-export default function LoginPage() {
+import Layout from "../../components/layout/Layout"
+import Profile from "../../components/user/Profile"
+const UdateProfile = () => {
   return (
-    <Layout title="Login">
-      <Login />
+    <Layout title="Update Profile">
+      <Profile />
     </Layout>
   )
 }
@@ -14,10 +12,10 @@ export default function LoginPage() {
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req })
 
-  if (session) {
+  if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/login",
         permanent: false,
       },
     }
@@ -27,3 +25,5 @@ export async function getServerSideProps(context) {
     props: { session },
   }
 }
+
+export default UdateProfile
