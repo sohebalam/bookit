@@ -1,7 +1,8 @@
 import nc from "next-connect"
 import connectDB from "../../../config/connectDB"
 
-import { registerUser } from "../../../controllers/authControllers"
+import { currentUserProfile } from "../../../controllers/authControllers"
+import { isAuthenticatedUser } from "../../../middlewares/auth"
 
 import onError from "../../../middlewares/errors"
 
@@ -9,6 +10,6 @@ const handler = nc({ onError })
 
 connectDB()
 
-handler.post(registerUser)
+handler.use(isAuthenticatedUser).get(currentUserProfile)
 
 export default handler

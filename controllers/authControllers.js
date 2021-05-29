@@ -3,10 +3,6 @@ import cloudinary from "cloudinary"
 
 import ErrorHandler from "../utils/errorHandler"
 import catchAsyncErrors from "../middlewares/catchAsyncErrors"
-import sendEmail from "../utils/sendEmail"
-
-import absoluteUrl from "next-absolute-url"
-import crypto from "crypto"
 
 // Setting up cloudinary config
 cloudinary.config({
@@ -38,5 +34,13 @@ export const registerUser = catchAsyncErrors(async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Account Registered successfully",
+  })
+})
+
+export const currentUserProfile = catchAsyncErrors(async (req, res) => {
+  const user = await User.findById(req.user._id)
+  res.status(200).json({
+    success: true,
+    user,
   })
 })

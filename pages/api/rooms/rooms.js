@@ -1,5 +1,5 @@
 import nc from "next-connect"
-import { allRooms, newRoom } from "../../../controllers/roomCont"
+import { allRooms, newRoom } from "../../../controllers/roomControllers"
 import connectDB from "../../../config/connectDB"
 import onError from "../../../middlewares/errors"
 
